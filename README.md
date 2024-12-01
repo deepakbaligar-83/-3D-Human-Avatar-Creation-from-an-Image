@@ -47,25 +47,89 @@ The system was trained and evaluated on the **AGORA** and **THuman** datasets. A
 
 ---
 
-## Installation
+# Installation
 
-### Prerequisites
+This document provides step-by-step instructions for setting up the PIFuHD system for high-resolution 3D human digitization.
 
-- **Operating System:** Ubuntu 18.04/20.04
-- **GPU Memory:** >12GB
-- **Python:** >=3.8
+## Step 1: Conda Installation
 
-### Required Libraries
+If you do not already have Conda installed, follow this [YouTube tutorial](https://www.youtube.com/watch?v=_hcYgA-UjCc) to install Conda.
 
-- PyTorch 1.13.0  
-- PyTorch3D  
-- CUDA 11.3  
-- GCC 7.5.0  
+## Step 2: Clone the Repository
 
-Install the required libraries:
+Clone this GitHub repository using the following commands:
 ```bash
-pip install torch torchvision
-pip install pytorch3d
+git clone https://github.com/facebookresearch/pifuhd
+cd pifuhd
+```
+
+## Step 3: Create a Conda Environment
+1) Create a new Conda environment:
+   
+```bash
+conda create -n pifuhd python=3.6
+```
+
+3) Activate the environment:
+
+```bash
+conda activate pifuhd
+```
+
+## Step 4: Install Dependencies
+
+### Using Conda
+
+Install PyTorch and torchvision:
+```bash
+conda install -c pytorch pytorch
+conda install -c pytorch torchvision
+```
+
+### Using pip
+Install additional libraries:
+
+```bash
+pip install pillow
+pip install json
+pip install scikit-image
+pip install tqdm
+pip install opencv-python
+pip install trimesh
+pip install ffmpeg
+```
+
+### Install PyOpenGL
+Download the appropriate .whl file for PyOpenGL and install it:
+
+```bash
+pip install C:/Users/user/Downloads/PyOpenGL-3.1.5-cp36-cp36m-win_amd64.whl
+```
+
+## Step 5: Setup Checkpoints
+
+### Create a directory for storing model checkpoints:
+
+```bash
+mkdir checkpoints
+```
+
+[Link](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbWhZR253X1dtT0d5bnk0THVyY0p3aG1HeHBvZ3xBQ3Jtc0tuMkh6QXp5Q2NFZEtYclJkVmxrN0hmUkQ0T2haenFic2ZWN2ZHSjRDVHg2SnhJZGlYaVBkbFkzUFpKSlU1S2w1QVk3Z2tGdmc2OHRsN1lhQTNKWmpXaTBWTGlpVmIySEhtUUQ5Tld2LU9uaDc1eG4tNA&q=https%3A%2F%2Fdl.fbaipublicfiles.com%2Fpifuhd%2Fcheckpoints%2Fpifuhd.pt&v=zzgCoyYyuN0)
+
+## Step 6: Run the Model
+
+To test the setup, run the following commands:
+
+### 1) Generate results from an input image:
+
+```bash
+python -m apps.simple_test
+```
+
+### 2) Render a turntable animation of the reconstruction:
+
+```bash
+python -m apps.render_turntable -f ./results/pifuhd_final/recon -ww 512 -hh 512
 ```
 
 ## Results
