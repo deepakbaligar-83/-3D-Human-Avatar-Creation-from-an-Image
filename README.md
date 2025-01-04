@@ -4,6 +4,12 @@ This project implements a robust system to generate realistic 3D human avatars f
 
 ---
 
+## Team
+- [Saisamarth Udikeri](https://github.com/Saisamarth21)<br>
+- [Deepak Baligar](https://github.com/deepakbaligar-83)<br>
+- [Guruprasad Pattar](https://github.com/Guruprasad006)
+
+---
 ## Key Features
 
 - **Pose-Guided Normal Prediction**  
